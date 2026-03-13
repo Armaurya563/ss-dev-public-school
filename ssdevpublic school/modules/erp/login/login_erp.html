@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ERP Login | S.S. Dev Public School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #00ffd5;
+      --bg: #070d1d;
+      --card: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --muted: #aab2d5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #111c3b, #040812);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ===== Animated Background ===== */
+    .blob {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: linear-gradient(135deg, #00ffd5, #0066ff);
+      filter: blur(120px);
+      opacity: .25;
+      animation: float 9s infinite alternate;
+    }
+
+    .blob2 {
+      bottom: -120px;
+      right: -120px;
+      animation-delay: 3s
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0)
+      }
+
+      to {
+        transform: translateY(60px)
+      }
+    }
+
+    /* ===== Login Card ===== */
+    .login {
+      position: relative;
+      width: 400px;
+      background: var(--card);
+      backdrop-filter: blur(22px);
+      padding: 38px;
+      border-radius: 28px;
+      box-shadow: 0 0 55px rgba(0, 255, 213, .25);
+      animation: zoom .8s ease;
+      overflow: hidden;
+    }
+
+    /* ===== LOGO WATERMARK ===== */
+    .login::before {
+      content: "";
+      position: absolute;
+      inset: -10%;
+      background: url("logo_ssdps-removebg-preview.png") center/260px no-repeat;
+      opacity: 0.07;
+      filter: blur(1px);
+      animation: watermarkFloat 14s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes watermarkFloat {
+      from {
+        transform: scale(1) rotate(-2deg)
+      }
+
+      to {
+        transform: scale(1.15) rotate(2deg)
+      }
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(.9);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    /* ===== Text ===== */
+    .logo {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .sub {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    /* ===== Roles ===== */
+    .roles {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .role {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .1);
+      color: var(--muted);
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .role.active {
+      background: var(--accent);
+      color: #07121f;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(0, 255, 213, .6);
+    }
+
+    /* ===== Inputs ===== */
+    .group {
+      margin-bottom: 16px
+    }
+
+    .group input {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: #0e162e;
+      color: #fff;
+      outline: none;
+    }
+
+    .group input::placeholder {
+      color: #7f8ab6
+    }
+
+    /* ===== Forgot ===== */
+    .forgot {
+      text-align: right;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .forgot a {
+      color: var(--accent);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* ===== Button ===== */
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #00ffd5, #00b3a0);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 255, 213, .5);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ===== Forgot Modal ===== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-box {
+      width: 340px;
+      background: #0d1733;
+      padding: 25px;
+      border-radius: 22px;
+      animation: slide .4s ease;
+    }
+
+    @keyframes slide {
+      from {
+        transform: translateY(30px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    .modal h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .modal button {
+      margin-top: 10px
+    }
+
+    .close {
+      text-align: right;
+      font-size: 14px;
+      color: #ff8a8a;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="blob"></div>
+  <div class="blob blob2"></div>
+
+  <div class="login">
+    <div class="logo">S.S. Dev Public School</div>
+    <div class="sub">Unified Management System</div>
+
+    <div class="roles">
+      <div class="role active" onclick="setRole('student',this)">🎓 Student</div>
+      <div class="role" onclick="setRole('teacher',this)">🧑‍🏫 Teacher</div>
+      <div class="role" onclick="setRole('admin',this)">🧑‍💼 Admin</div>
+    </div>
+
+    <div class="group">
+      <input type="text" placeholder="User ID / Email">
+    </div>
+    <div class="group">
+      <input type="password" placeholder="Password">
+    </div>
+
+    <div class="forgot">
+      <a onclick="openForgot()">Forgot Password?</a>
+    </div>
+
+    <button onclick="login()">Login</button>
+
+    <div class="footer">© 2025 S.S. Dev Public School</div>
+  </div>
+
+  <!-- Forgot Modal -->
+  <div class="modal" id="forgotModal">
+    <div class="modal-box">
+      <div class="close" onclick="closeForgot()">✖</div>
+      <h3>Forgot Password</h3>
+      <p>Enter registered Email / User ID</p>
+      <input type="text" placeholder="Email / User ID" style="width:100%;padding:12px;border-radius:12px;border:none;background:#0e162e;color:#fff">
+      <button onclick="sendReset()">Send Reset Link</button>
+    </div>
+  </div>
+
+  <script>
+    let role = "student";
+
+    function setRole(r, el) {
+      role = r;
+      document.querySelectorAll('.role').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function login() {
+      if (role === "student") location.href = "student-dashboard.html";
+      else if (role === "teacher") location.href = "teacher-dashboard.html";
+      else location.href = "admin-dashboard.html";
+    }
+
+    function openForgot() {
+      document.getElementById("forgotModal").style.display = "flex";
+    }
+    function closeForgot() {
+      document.getElementById("forgotModal").style.display = "none";
+    }
+    function sendReset() {
+      alert("Reset link sent successfully! (Demo)");
+      closeForgot();
+    }
+  </script>
+
+</body>
+
+</html>

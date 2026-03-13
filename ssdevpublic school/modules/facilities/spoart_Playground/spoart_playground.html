@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Facility | S.S. Dev Public School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffd5;
+            --bg: #060b18;
+            --card: #121c35;
+            --text: #ffffff;
+            --muted: #9aa4c7;
+            --grass: #2d5a27;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 18px 40px;
+            background: rgba(11, 18, 32, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header span {
+            color: var(--primary);
+        }
+
+        /* ===== ANIMATED SPORTS GROUND ===== */
+        .ground-scene {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .grass {
+            width: 100%;
+            height: 80px;
+            background: var(--grass);
+            border-top: 4px solid #3d7a36;
+            position: relative;
+        }
+
+        /* Animated Football */
+        .football {
+            position: absolute;
+            bottom: 65px;
+            left: -50px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            background-image: radial-gradient(circle at 30% 30%, #fff, #ccc);
+            border: 2px solid #333;
+            animation: kickBall 5s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        @keyframes kickBall {
+            0% {
+                left: -50px;
+                transform: rotate(0deg);
+                bottom: 65px;
+            }
+
+            20% {
+                bottom: 120px;
+            }
+
+            40% {
+                bottom: 65px;
+            }
+
+            60% {
+                bottom: 100px;
+            }
+
+            80% {
+                bottom: 65px;
+            }
+
+            100% {
+                left: 110%;
+                transform: rotate(720deg);
+                bottom: 80px;
+            }
+        }
+
+        /* ===== CONTENT SECTION ===== */
+        .container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .panel {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .panel h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        /* COACH PROFILE */
+        .coach-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 213, 0.1);
+        }
+
+        .coach-img {
+            width: 70px;
+            height: 70px;
+            background: #1a2a4a;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        /* SPORTS LIST */
+        .sports-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .sport-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .sport-item:hover {
+            border-color: var(--primary);
+            background: rgba(0, 255, 213, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        Sports <span>Facility</span>
+    </header>
+
+    <div class="ground-scene">
+        <div class="football">⚽</div>
+        <div class="grass">
+            <div
+                style="position:absolute; top: 10px; left: 50%; width: 2px; height: 60px; background: rgba(255,255,255,0.3);">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+
+            <div class="panel">
+                <h3>🏆 Head Coach</h3>
+                <div class="coach-card">
+                    <div class="coach-img">🏃‍♂️</div>
+                    <div class="coach-info">
+                        <h4 id="cName">Vikram Singh</h4>
+                        <p style="color: var(--muted); font-size: 13px;"><strong>Exp:</strong> 10+ Years (National
+                            Level)</p>
+                        <p style="color: var(--muted); font-size: 13px;"><strong>Contact:</strong> +91 99887-76655</p>
+                    </div>
+                </div>
+                <button onclick="changeCoach()"
+                    style="margin-top: 15px; width: 100%; padding: 10px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 8px; cursor: pointer;">Next
+                    Coach Profile</button>
+            </div>
+
+            <div class="panel">
+                <h3>🏀 Available Sports</h3>
+                <div class="sports-list">
+                    <div class="sport-item">🏏 Cricket</div>
+                    <div class="sport-item">⚽ Football</div>
+                    <div class="sport-item">🏀 Basketball</div>
+                    <div class="sport-item">🏸 Badminton</div>
+                    <div class="sport-item">🏓 Table Tennis</div>
+                    <div class="sport-item">♟️ Chess</div>
+                    <div class="sport-item">🥋 Martial Arts</div>
+                    <div class="sport-item">🏊 Swimming</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const coaches = [
+            { name: "Vikram Singh", exp: "10+ Years", contact: "+91 99887-76655", icon: "🏃‍♂️" },
+            { name: "Anjali Sharma", exp: "7 Years (Yoga & PT)", contact: "+91 88776-65544", icon: "🧘‍♀️" },
+            { name: "Rahul Dravid", exp: "15 Years (Cricket)", contact: "+91 77665-54433", icon: "🏏" }
+        ];
+
+        let index = 0;
+        function changeCoach() {
+            index = (index + 1) % coaches.length;
+            document.getElementById('cName').innerText = coaches[index].name;
+            document.querySelector('.coach-info p:nth-child(2)').innerHTML = `<strong>Exp:</strong> ${coaches[index].exp}`;
+            document.querySelector('.coach-info p:nth-child(3)').innerHTML = `<strong>Contact:</strong> ${coaches[index].contact}`;
+            document.querySelector('.coach-img').innerText = coaches[index].icon;
+        }
+    </script>
+
+</body>
+
+</html>

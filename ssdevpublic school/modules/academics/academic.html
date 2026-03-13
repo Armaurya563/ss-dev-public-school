@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Academics | S.S. Dev Public School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0b1220;
+      color: #fff;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* --- NAVIGATION --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 35, 0.98);
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid #00ffd533;
+    }
+
+    header h2 {
+      color: #00ffd5;
+      font-size: 1.4rem;
+    }
+
+    /* Desktop Nav */
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffd5;
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      color: #00ffd5;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* --- HERO --- */
+    .hero {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .9)), url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b") center/cover;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .hero span {
+      color: #00ffd5;
+      display: block;
+    }
+
+    /* --- SECTION BASE --- */
+    section {
+      padding: 60px 5%;
+      width: 100%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      color: #00ffd5;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    /* --- GRID LOGIC (ASLI RESPONSIVE) --- */
+    .curriculum,
+    .streams {
+      display: grid;
+      grid-template-columns: 1fr;
+      /* Default: Mobile par 1 column */
+      gap: 20px;
+    }
+
+    /* Tablet aur Desktop ke liye Columns */
+    @media (min-width: 768px) {
+      .curriculum {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .streams {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .curriculum {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .streams {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* --- CARDS --- */
+    .card,
+    .stream {
+      background: rgba(255, 255, 255, .05);
+      padding: 30px;
+      border-radius: 15px;
+      transition: 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .stream {
+      background: linear-gradient(135deg, #00ffd5, #0077ff);
+      color: #0b1220;
+      opacity: 1;
+      transform: none;
+    }
+
+    .card h3,
+    .stream h3 {
+      margin-bottom: 15px;
+    }
+
+    .stream ul {
+      padding-left: 20px;
+      list-style: square;
+    }
+
+    /* --- ANIMATION --- */
+    .show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: 0.8s ease;
+    }
+
+    /* --- MOBILE NAV OVERLAY --- */
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #050b18;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav a {
+        font-size: 1.2rem;
+        margin: 15px 0;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      color: #666;
+      font-size: 0.8rem;
+      border-top: 1px solid #111;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>S.S. Dev</h2>
+    <div class="menu-toggle" id="mobile-menu">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="nav-list">
+      <a href="/index.html">Home</a>
+      <a href="/modules/about/about.html">About</a>
+      <a href="/modules/ntification/notification.html">Notification</a>
+      <a href="academmic.html" style="border-bottom: 1px solid #00ffd5;">Academics</a>
+      <a href="/modules/facilities/facilities.html">Facilities</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Academic <br><span>Excellence & Learning Path</span></h1>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <h2>Our Curriculum</h2>
+      <p>Foundation to future-ready education</p>
+    </div>
+    <div class="curriculum">
+      <div class="card">
+        <h3>Pre-Primary</h3>
+        <p>Play-based learning, phonics, numbers, creativity & social skills.</p>
+      </div>
+      <div class="card">
+        <h3>Primary (I-V)</h3>
+        <p>Strong foundation in language, mathematics, EVS & moral values.</p>
+      </div>
+      <div class="card">
+        <h3>Middle (VI-VIII)</h3>
+        <p>Concept clarity, science experiments & analytical thinking.</p>
+      </div>
+      <div class="card) ">
+        <h3>Secondary (IX-X)</h3>
+        <p>Board-oriented preparation with focus on fundamentals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Senior Secondary Streams</h2>
+      <p>Choose your career path</p>
+    </div>
+    <div class="streams">
+      <div class="stream">
+        <h3>Science</h3>
+        <ul>
+          <li>Physics</li>
+          <li>Chemistry</li>
+          <li>Maths/Bio</li>
+          <li>CS</li>
+        </ul>
+      </div>
+      <div class="stream">
+        <h3>Commerce</h3>
+        <ul>
+          <li>Accountancy</li>
+          <li>Business Studies</li>
+          <li>Economics</li>
+          <li>IP</li>
+        </ul>
+      </div>
+      <div class="stream">
+        <h3>Arts</h3>
+        <ul>
+          <li>History</li>
+          <li>Pol Science</li>
+          <li>Sociology</li>
+          <li>English</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 S.S. Dev Public School | Academics</footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    menu.onclick = () => {
+      navList.classList.toggle('active');
+      menu.innerHTML = navList.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    };
+
+    // Scroll Animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".card").forEach(c => observer.observe(c));
+  </script>
+
+</body>
+
+</html>

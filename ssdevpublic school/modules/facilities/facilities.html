@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Facilities | S.S. Dev Public School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0b1220;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 15, 35, .9);
+      backdrop-filter: blur(12px);
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    header h2 {
+      color: #00ffd5;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: .95rem;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #00ffd5;
+      border-bottom: 2px solid #00ffd5;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: 0 10%;
+      background:
+        linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .9)),
+        url("https://images.unsplash.com/photo-1580582932707-520aed937b7b");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero span {
+      color: #00ffd5
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      padding: 120px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #00ffd5;
+    }
+
+    .section-title p {
+      color: #bbb;
+      margin-top: 12px;
+    }
+
+    /* ===== GRID ===== */
+    .facilities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(15px);
+      padding: 35px 25px;
+      border-radius: 25px;
+      text-align: center;
+      transition: .5s;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      border: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: linear-gradient(135deg, #00ffd5, #0077ff);
+      top: -50%;
+      left: -50%;
+      transform: rotate(25deg);
+      opacity: 0;
+      transition: .6s;
+    }
+
+    .card:hover::before {
+      opacity: .08;
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.04);
+      border-color: #00ffd5;
+      box-shadow: 0 20px 50px rgba(0, 255, 213, .25);
+    }
+
+    .card i {
+      font-size: 3rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #00ffd5;
+    }
+
+    .card p {
+      font-size: .9rem;
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #00ffd5;
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    .card a:hover {
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #00ffd5;
+    }
+
+    /* ===== REVEAL ===== */
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 1s cubic-bezier(.175, .885, .32, 1.2);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #050b18;
+      padding: 40px;
+      text-align: center;
+      color: #aaa;
+      border-top: 1px solid #1a2a4a;
+    }
+
+    /* ===== ANIMATION ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px) {
+
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #111a33;
+        flex-direction: column;
+        width: 230px;
+        padding: 20px;
+        display: none;
+      }
+
+      nav a {
+        margin: 12px 0;
+      }
+
+      nav.show-menu {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>S.S. Dev</h2>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="nav">
+      <a href="/index.html">Home</a>
+      <a href="/modules/about/about.html">About</a>
+      <a href="/modules/ntification/notification.html">Notification</a>
+      <a href="/modules/academics/academmic.html">Academics</a>
+      <a href="#" class="active">Facilities</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>World-Class <span>Facilities</span> for Holistic Growth</h1>
+  </div>
+
+  <section>
+
+    <div class="section-title">
+      <h2>Our Facilities</h2>
+      <p>Supporting learning beyond classrooms with modern infrastructure</p>
+    </div>
+
+    <div class="facilities">
+
+      <div class="card"><i>🧪</i>
+        <h3>Science Laboratories</h3>
+        <p>Advanced Physics, Chemistry and Biology labs for practical learning.</p><a href="/modules/facilities/science_Lab/science_lab.html">Read More</a>
+      </div>
+
+      <div class="card"><i>💻</i>
+        <h3>Computer Lab</h3>
+        <p>Modern computer systems with internet & coding facilities.</p><a href="/modules/facilities/computer_Lab/computer_lab.html">Read More</a>
+      </div>
+
+      <div class="card"><i>📚</i>
+        <h3>Library</h3>
+        <p>Extensive collection of books and digital resources.</p><a href="/modules/facilities/library/library.html">Read More</a>
+      </div>
+
+      <div class="card"><i>🎨</i>
+        <h3>Art & Craft</h3>
+        <p>Creative lab for painting, clay modeling & imagination.</p><a href="/modules/facilities/art&craft_Lab/art&craft.html">Read More</a>
+      </div>
+
+      <div class="card"><i>🎶</i>
+        <h3>Music Studio</h3>
+        <p>Professional soundproof room with instruments.</p><a href="/modules/facilities/music_Studio/music_studio.html">Read More</a>
+      </div>
+
+      <div class="card"><i>🚌</i>
+        <h3>Transport</h3>
+        <p>Safe buses with GPS tracking system.</p><a href="/modules/facilities/transport_Facility/transport_facility.html">Read More</a>
+      </div>
+
+      <div class="card"><i>🏀</i>
+        <h3>Sports</h3>
+        <p>Large playground with professional sports equipment.</p><a href="/modules/facilities/spoart_Playground/spoart_playground.html">Read More</a>
+      </div>
+
+      <div class="card"><i>📺</i>
+        <h3>Smart Classes</h3>
+        <p>Interactive digital smart boards for immersive learning.</p><a href="/modules/facilities/smart_Classroom/smart_classroom.html">Read More</a>
+      </div>
+
+      <div class="card"><i>🚀</i>
+        <h3>STEM & Robotics</h3>
+        <p>Hands-on AI & robotics innovation lab.</p><a href="/modules/facilities/stem&_Robotics/stem&_robotics.html">Read More</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2025 S.S. Dev Public School | Facilities
+  </footer>
+
+  <script>
+
+    /* MOBILE MENU */
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("show-menu");
+    }
+
+    /* SCROLL REVEAL (Optimized) */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".card")
+      .forEach(card => observer.observe(card));
+
+  </script>
+
+</body>
+
+</html>

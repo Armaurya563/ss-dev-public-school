@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>S.S. Dev Public School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Fonts & Icons ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="jng" href="/assits/logo_ssdps-removebg-preview.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- ======= privacy and policy ======= -->
+    <div id="privacyAutoModal" class="admission-modal" style="display: flex;">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #1a237e;">
+                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+                <span class="close-btn" id="closePrivacyTop"
+                    style="font-weight: 800; border-radius: 5px; text-align: center;">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to <strong>S.S. Dev Public School</strong>.Please read our Privacy Policy carefully before
+                    using the website:</p>
+
+                <div class="policy-item">
+                    <h3><i class="fas fa-user-lock"></i> Data Privacy</h3>
+                    <p>We keep student and parent details completely secure and do not share them with any third party.
+                    </p>
+                </div>
+
+                <div class="policy-item">
+                    <h3><i class="fas fa-cookie-bite"></i> Cookies Policy</h3>
+                    <p>Website experience behtar banane ke liye hum basic cookies ka istemal karte hain.</p>
+                </div>
+
+                <div class="policy-item">
+                    <h3><i class="fas fa-info-circle"></i> Usage</h3>
+                    <p>This website is designed only for school management and educational information.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-apply" id="acceptPrivacyBtn"
+                    style="width: 100%; background: #1a237e; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">I
+                    Accept & Proceed</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div class="logo-area">
+            <img src="/assits/logo_ssdps-removebg-preview.png" alt="School Logo">
+            <h2>S.S. Dev</h2>
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav>
+            <ul id="navList">
+                <li><a href="#">Home</a></li>
+                <li><a href="/modules/about/about.html">About</a></li>
+                <li><a href="/modules/academics/academic.html">Academics</a></li>
+                <li><a href="/modules/ntification/notification.html">Notification</a></li>
+                <li><a href="/modules/facilities/facilities.html">Facilities</a></li>
+                <li><a href="/modules/contact/ContactIndex.html">Contact</a></li>
+
+                <li class="erp-menu">
+                    <a href="javascript:void(0)" id="erpBtn">ERP ▾</a>
+                    <ul class="dropdown" id="erpDropdown">
+                        <li><a href="/modules/erp/student/studentERPDashboard.html">Student</a></li>
+                        <li><a href="/modules/erp/teacher/teachersERPIndex.html">Teacher</a></li>
+                        <li><a href="/modules/erp/admin/adminERPIndex.html">Admin</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+    <!-- ======= home section ======= -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assits/ssdevbuilding.jpg');">
+            </div>
+            <div class="slide"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assits/SSDEV_even.jpg');">
+            </div>
+            <div class="slide"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assits/SSDEV_even2.jpg');">
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1 id="typingText"></h1>
+            <p>Empowering students through technology, innovation, and holistic development.</p>
+            <div class="hero-btns">
+                <button class="btn" onclick="document.getElementById('support').scrollIntoView()">Explore
+                    Support</button>
+                <a href="/viewGalary/View Gallery.html">
+                    <button class="btn btn-outline">View Gallery</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- ================= support-section ================= -->
+    <section class="support-section" id="support">
+        <div class="section-header">
+            <h2>Customer <span>Support Center</span></h2>
+            <p>We are here to help you 24/7 with any queries or technical issues.</p>
+        </div>
+        <div class="support-container">
+            <div class="support-card">
+                <i class="fas fa-headset"></i>
+                <h3>Helpline</h3>
+                <p>Call us at: <br><strong>+91 99887 76655</strong><br>Time: 08:00 AM - 04:00 PM</p>
+            </div>
+            <div class="support-card contact-form">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>Online Inquiry</h3>
+                <form onsubmit="event.preventDefault(); alert('Message Sent Successfully!')">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="How can we help you?" rows="4" required></textarea>
+                    <button class="btn" style="width:100%">Submit Ticket</button>
+                </form>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-location-dot"></i>
+                <h3>Address</h3>
+                <p>Hetimpur, Hetamapur Azmal Chaudhari,<br> Uttar Pradesh 232329</p>
+                <p style="margin-top:10px; font-size:0.8rem; color:var(--primary)">Zamania Police Station Area</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="section-header">
+            <h3>Find Us on <span>Google Maps</span></h3>
+        </div>
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14421.242254345473!2d83.54143245!3d25.3609141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991f868d40733bf%3A0xc3485747f48b9400!2sHetimpur%2C%20Uttar%20Pradesh%20232329!5e0!3m2!1sen!2sin!4v1703140000000!5m2!1sen!2sin"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>S.S. Dev Public School</h3>
+                <p style="color: #9aa4c7; font-size: 0.85rem; line-height: 1.6;">
+                    Leading education with smart technology and traditional values. Shaping the future of Zamania and
+                    beyond.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/modules/about/about.html">About School</a></li>
+                    <li><a href="javascript:void(0)" id="openAdmission">Admission Policy</a></li>
+                    <li><a href="/modules/facilities/facilities.html">Facility Modules</a></li>
+                    <li><a href="/index.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Student ERP</h4>
+                <ul>
+                    <li><a href="#">Fee Payment</a></li>
+                    <li><a href="#">Examination</a></li>
+                    <li><a href="/modules/ntification/notification.html">Notification</a></li>
+                    <li><a href="#">Online Classes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p style="font-size: 0.85rem; color: #9aa4c7;">Email: contact@ssdev.edu.in</p>
+                <p style="font-size: 0.85rem; color: #9aa4c7;">Zamania, Ghazipur, UP</p>
+                <div style="margin-top: 15px; font-size: 1.2rem; display: flex; gap: 15px; justify-content: center;">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/7054955563"><i class="fab fa-whatsapp"></i></a>
+                    <a href="www.youtube.com/@aranimation173"><i class="fab fa-youtube"></i></a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= admition Policy ======= -->
+        <a href="javascript:void(0)" id="openAdmission"></a>
+        <div id="admissionModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-file-contract"></i> Admission Policy</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="policy-section">
+                        <h3><i class="fas fa-check-circle"></i> Eligibility Criteria</h3>
+                        <p>Admission is open to all students regardless of caste, creed, or religion. The minimum age
+                            for Nursery is 3 years as of April 1st of the academic year.</p>
+                    </div>
+                    <div class="policy-section">
+                        <h3><i class="fas fa-file-alt"></i> Required Documents</h3>
+                        <ul>
+                            <li>Birth Certificate (Original & Photocopy)</li>
+                            <li>Previous School's Transfer Certificate (TC)</li>
+                            <li>Recent Passport size photographs (4)</li>
+                            <li>Aadhar Card of Student and Parents</li>
+                        </ul>
+                    </div>
+                    <div class="policy-section">
+                        <h3><i class="fas fa-info-circle"></i> Admission Process</h3>
+                        <p>Forms are available at the school office. Selection for higher classes is based on an
+                            entrance assessment followed by an interaction with the Principal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= examination ======= -->
+        <div id="examModal" class="admission-modal">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #1a237e;">
+                    <h2><i class="fas fa-file-signature"></i> Examination Cell</h2>
+                    <span class="close-btn" id="closeExamX">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="policy-item">
+                        <h3><i class="fas fa-sync-alt"></i> Evaluation System</h3>
+                        <p>School follow karta hai <strong>CCE (Continuous and Comprehensive Evaluation)</strong>
+                            pattern. Isme
+                            Unit Tests (PT-1, PT-2), Half-Yearly aur Annual Examinations shamil hain.</p>
+                    </div>
+
+                    <div class="policy-item">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Important Instructions</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Examination Hall mein Admit Card lana compulsory hai.</li>
+                            <li><i class="fas fa-check"></i> 75% Attendance honi chahiye exam mein baithne ke liye.</li>
+                            <li><i class="fas fa-check"></i> Kisi bhi tarah ki cheating pakde jane par pariksha radd
+                                (cancel)
+                                kar di jayegi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-item">
+                        <h3><i class="fas fa-chart-bar"></i> Result Declaration</h3>
+                        <p>Annual Result har saal <strong>March ke aakhri hafte</strong> mein declare kiya jata hai.</p>
+                        <div
+                            style="margin-top: 10px; background: #f1f3f9; padding: 10px; border-radius: 5px; border-left: 4px solid #1a237e;">
+                            <strong>Yahan Result Dekhein:</strong> <a
+                                href="/modules/erp/student/studentERPDashboard.html"
+                                style="color: #1a237e; text-decoration: underline; font-weight: bold;">Student ERP
+                                Portal</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-apply" id="closeExamBtn" style="background: #d32f2f;">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= fee payment ======= -->
+        <div id="feeModal" class="admission-modal">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #2e7d32, #43a047);">
+                    <h2><i class="fas fa-file-invoice-dollar"></i> Fee Structure & Payment</h2>
+                    <span class="close-btn" id="closeFeeX">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="policy-item">
+                        <h3><i class="fas fa-info-circle"></i> Fee Policy</h3>
+                        <p>School fees har mahine ki <strong>10 tarikh</strong> tak jama ho jani chahiye. Late payment
+                            par ₹50
+                            pratidin fine lag sakta hai.</p>
+                    </div>
+
+                    <div class="policy-item">
+                        <h3><i class="fas fa-table"></i> Tentative Fee Structure</h3>
+                        <table style="width:100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem;">
+                            <tr style="background: #f1f8e9; text-align: left;">
+                                <th style="padding: 10px; border: 1px solid #ddd;">Class Groups</th>
+                                <th style="padding: 10px; border: 1px solid #ddd;">Monthly Fee</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;">Nursery to UKG</td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">₹800 - ₹1000</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;">Class 1 to 5</td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">₹1200 - ₹1500</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;">Class 6 to 10</td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">₹1800 - ₹2500</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="policy-item">
+                        <h3><i class="fas fa-credit-card"></i> Online Payment Methods</h3>
+                        <p>Aap school office mein ya niche diye gaye button par click karke <strong>Student ERP</strong>
+                            ke
+                            madhyam se UPI, Debit/Credit Card se online fee jama kar sakte hain.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-apply"
+                        onclick="window.location.href='/modules/erp/student/studentERPDashboard.html'"
+                        style="background: #2e7d32;">Pay Fees Online</button>
+                    <button class="btn-close-footer" id="closeFeeBtn">Close</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ======= Online Classes Modal ======= -->
+        <div id="onlineClassModal" class="modal">
+
+            <div class="modal-box">
+
+                <div class="modal-header">
+                    <h2>Online Classes Portal</h2>
+                    <button class="close-btn" onclick="closeOnlineClass()">✕</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- ====== Live Classes Section ===== -->
+                    <div class="policy-item">
+                        <h3>Live Classes</h3>
+                        <p>Students can join daily live classes conducted by teachers.</p>
+
+                        <div class="class-box">
+                            <p><strong>Class 6 - Mathematics</strong></p>
+                            <p>Time: 10:00 AM</p>
+                            <a href="#" class="join-btn">Join Now</a>
+                        </div>
+
+                        <div class="class-box">
+                            <p><strong>Class 8 - Science</strong></p>
+                            <p>Time: 12:00 PM</p>
+                            <a href="#" class="join-btn">Join Now</a>
+                        </div>
+                    </div>
+
+                    <!-- ===== Recorded Classes Section ===== -->
+                    <div class="policy-item">
+                        <h3>Recorded Lectures</h3>
+                        <p>Missed a class? Watch recorded lectures anytime.</p>
+
+                        <div class="class-box">
+                            <p><strong>English Grammar - Class 7</strong></p>
+                            <a href="#" class="watch-btn">Watch Video</a>
+                        </div>
+
+                        <div class="class-box">
+                            <p><strong>Algebra Basics - Class 9</strong></p>
+                            <a href="#" class="watch-btn">Watch Video</a>
+                        </div>
+                    </div>
+
+                    <!--====== ERP Access ====== -->
+                    <div class="policy-item">
+                        <h3>Student Login Required</h3>
+                        <p>All online classes are accessible through Student ERP Portal.</p>
+                        <a href="/modules/erp/student/studentERPDashboard.html" class="erp-btn">
+                            Go to Student ERP
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-close" onclick="closeOnlineClass()">Close</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 <span><a href="/index.html">S.S. Dev Public School</a></span>. All Rights Reserved. |
+            Desgine by
+            <span><a href="https://courageous-semifreddo-4a150f.netlify.app/">A.R. Maurya</a></span>.
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
