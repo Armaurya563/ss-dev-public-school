@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>S.S. Dev Labs | Ultimate Module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00ffd5;
+      --bg: #060b18;
+      --card: #121c35;
+      --text: #ffffff;
+      --muted: #9aa4c7;
+      --accent: #00ffd5;
+      --danger: #ff4d4d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 18, 32, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 18px 40px;
+      font-size: 22px;
+      font-weight: 700;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    header span {
+      color: var(--primary);
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* ===== ANIMATION STAGE ===== */
+    .animation-stage {
+      width: 100%;
+      height: 300px;
+      background: radial-gradient(circle, #1a2a4a 0%, #060b18 100%);
+      border-radius: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+      transition: 0.5s ease;
+    }
+
+    /* Animations Logic */
+    #physics-ui {
+      display: flex;
+      gap: 20px;
+    }
+
+    .pendulum {
+      width: 3px;
+      height: 150px;
+      background: #fff;
+      transform-origin: top;
+      animation: swing 1.5s ease-in-out infinite alternate;
+    }
+
+    .pendulum::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: -15px;
+      width: 30px;
+      height: 30px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    #chem-ui {
+      display: none;
+      position: relative;
+    }
+
+    .beaker {
+      width: 70px;
+      height: 100px;
+      border: 3px solid #fff;
+      border-top: none;
+      border-radius: 0 0 15px 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .liquid {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 65%;
+      background: var(--accent);
+      animation: wave 2s infinite alternate;
+    }
+
+    #bio-ui {
+      display: none;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 4px dashed var(--accent);
+      border-radius: 50%;
+      animation: spin 8s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nucleus {
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    @keyframes swing {
+      from {
+        transform: rotate(30deg);
+      }
+
+      to {
+        transform: rotate(-30deg);
+      }
+    }
+
+    @keyframes wave {
+      from {
+        height: 60%;
+      }
+
+      to {
+        height: 75%;
+      }
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ===== GRID LAYOUT ===== */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .lab-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 25px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: 0.3s;
+    }
+
+    .lab-card.active {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-5px);
+    }
+
+    .lab-header {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    /* ===== SAFETY & RULES PANEL ===== */
+    .info-sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .panel {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .panel h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .protocol-list,
+    .rule-list {
+      list-style: none;
+    }
+
+    .protocol-list li {
+      background: rgba(255, 77, 77, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .rule-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+
+    .rule-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      width: 20px;
+    }
+
+    /* ===== SCHEDULE TABLE ===== */
+    .schedule-panel {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      margin-top: 30px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      padding: 15px;
+      border-bottom: 2px solid #2a3552;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+    }
+
+    .highlight-row {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent);
+      font-weight: bold;
+      border-left: 4px solid var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>Science <span>Lab</span></header>
+
+  <div class="container">
+    <div class="animation-stage" id="stage">
+      <div id="physics-ui">
+        <div class="pendulum"></div>
+        <div class="pendulum" style="animation-delay: 0.3s"></div>
+      </div>
+      <div id="chem-ui">
+        <div class="beaker">
+          <div class="liquid"></div>
+        </div>
+      </div>
+      <div id="bio-ui">
+        <div class="cell">
+          <div class="nucleus"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro" style="text-align: center; margin-bottom: 30px;">
+      <h2 id="current-lab-title">Physics Laboratory</h2>
+    </div>
+
+    <div class="lab-grid">
+      <div class="lab-card active" onclick="showLab('physics', this)">
+        <div class="lab-header">Physics Lab</div>
+        <p style="font-size:12px; color:var(--muted)">Optics, Mechanics & Waves</p>
+      </div>
+      <div class="lab-card" onclick="showLab('chemistry', this)">
+        <div class="lab-header">Chemistry Lab</div>
+        <p style="font-size:12px; color:var(--muted)">Organic & Inorganic Reactions</p>
+      </div>
+      <div class="lab-card" onclick="showLab('biology', this)">
+        <div class="lab-header">Biology Lab</div>
+        <p style="font-size:12px; color:var(--muted)">Cytology & Human Anatomy</p>
+      </div>
+    </div>
+
+    <div class="info-sections">
+      <div class="panel">
+        <h3>⚠️ Safety Protocol</h3>
+        <ul class="protocol-list">
+          <li>Wear Lab Coat and Safety Goggles at all times.</li>
+          <li>Do not touch chemicals or wires with bare hands.</li>
+          <li>In case of emergency, use the Safety Shower/Eye Wash.</li>
+          <li>Locate Fire Extinguisher before starting experiments.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>📌 General Lab Rules</h3>
+        <ul class="rule-list">
+          <li>Maintain pin-drop silence during practicals.</li>
+          <li>Mobile phones and bags are not allowed inside.</li>
+          <li>Handle all glass apparatus with extreme care.</li>
+          <li>Clean and dry all equipment before returning.</li>
+          <li>Follow Teacher's instructions strictly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="schedule-panel">
+      <h3>📅 Lab Schedule</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Days</th>
+            <th>Batch</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="schedule-body">
+          <tr id="row-physics" class="highlight-row">
+            <td>Physics</td>
+            <td>Mon-Tue</td>
+            <td>XI & XII</td>
+            <td>09:00 - 11:30</td>
+          </tr>
+          <tr id="row-chemistry">
+            <td>Chemistry</td>
+            <td>Wed-Thu</td>
+            <td>XI & XII</td>
+            <td>09:00 - 11:30</td>
+          </tr>
+          <tr id="row-biology">
+            <td>Biology</td>
+            <td>Friday</td>
+            <td>IX - XII</td>
+            <td>10:00 - 12:30</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function showLab(subject, element) {
+      document.querySelectorAll('.lab-card').forEach(card => card.classList.remove('active'));
+      element.classList.add('active');
+
+      document.getElementById('physics-ui').style.display = 'none';
+      document.getElementById('chem-ui').style.display = 'none';
+      document.getElementById('bio-ui').style.display = 'none';
+
+      document.getElementById('row-physics').classList.remove('highlight-row');
+      document.getElementById('row-chemistry').classList.remove('highlight-row');
+      document.getElementById('row-biology').classList.remove('highlight-row');
+
+      const title = document.getElementById('current-lab-title');
+
+      if (subject === 'physics') {
+        document.getElementById('physics-ui').style.display = 'flex';
+        document.documentElement.style.setProperty('--accent', '#00ffd5');
+        document.getElementById('row-physics').classList.add('highlight-row');
+        title.innerText = "Physics Laboratory";
+      }
+      else if (subject === 'chemistry') {
+        document.getElementById('chem-ui').style.display = 'block';
+        document.documentElement.style.setProperty('--accent', '#ff007a');
+        document.getElementById('row-chemistry').classList.add('highlight-row');
+        title.innerText = "Chemistry Laboratory";
+      }
+      else if (subject === 'biology') {
+        document.getElementById('bio-ui').style.display = 'flex';
+        document.documentElement.style.setProperty('--accent', '#00e676');
+        document.getElementById('row-biology').classList.add('highlight-row');
+        title.innerText = "Biology Laboratory";
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>

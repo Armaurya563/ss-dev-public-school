@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Auditorium | S.S. Dev Public School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffd5;
+            --bg: #060b18;
+            --card: #121c35;
+            --text: #ffffff;
+            --muted: #9aa4c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 18, 32, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 18px 40px;
+            font-size: 22px;
+            font-weight: 700;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        header span {
+            color: var(--primary);
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ===== 1st SECTION: STAGE ANIMATION ===== */
+        .stage-hero {
+            width: 100%;
+            height: 380px;
+            background: radial-gradient(circle, #1a2a4a 0%, #060b18 100%);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Spotlight */
+        .spotlight {
+            position: absolute;
+            top: -50px;
+            width: 200px;
+            height: 500px;
+            background: radial-gradient(ellipse at top, rgba(0, 255, 213, 0.2), transparent 70%);
+            transform-origin: top;
+            animation: swingLight 4s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes swingLight {
+
+            0%,
+            100% {
+                transform: rotate(-20deg);
+            }
+
+            50% {
+                transform: rotate(20deg);
+            }
+        }
+
+        .hero-text {
+            z-index: 10;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 38px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-text p {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 2nd SECTION: AUDITORIUM CARDS ===== */
+        .section-label {
+            color: var(--primary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 255, 213, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 45px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* ===== 3rd SECTION: OVERVIEW & INCHARGE ===== */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .panel {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .panel h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .mentor-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .m-img {
+            width: 70px;
+            height: 70px;
+            background: #1a2a4a;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+        }
+
+        /* ===== 4th SECTION: RULES, STATS, UPCOMING ===== */
+        .triple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .small-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        table {
+            width: 100%;
+            font-size: 13px;
+            color: var(--muted);
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 10px 5px;
+            border-bottom: 1px solid #222;
+            text-align: left;
+        }
+
+        th {
+            color: var(--primary);
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid var(--primary);
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>Grand<span> Auditorium</span></header>
+
+    <div class="container">
+
+        <div class="stage-hero">
+            <div class="spotlight"></div>
+            <div class="hero-text">
+                <h1>The Grand Stage</h1>
+                <p>Where Talents Take Center Stage</p>
+            </div>
+        </div>
+
+        <h3 class="section-label">Venue Highlights</h3>
+        <div class="feature-grid">
+            <div class="feature-card" onclick="openModal('capacity')"><i>🪑</i>
+                <h4>Seating</h4>
+                <p>1000+ Capacity</p>
+            </div>
+            <div class="feature-card" onclick="openModal('audio')"><i>🔊</i>
+                <h4>Sound System</h4>
+                <p>Dolby Atmos Ready</p>
+            </div>
+            <div class="feature-card" onclick="openModal('lights')"><i>💡</i>
+                <h4>Intelligent Lighting</h4>
+                <p>RGB Concert Lights</p>
+            </div>
+            <div class="feature-card" onclick="openModal('ac')"><i>❄️</i>
+                <h4>HVAC System</h4>
+                <p>Fully Air Conditioned</p>
+            </div>
+        </div>
+
+        <h3 class="section-label">Venue Details</h3>
+        <div class="dual-grid">
+            <div class="panel">
+                <h3>Hall Overview</h3>
+                <p style="color:var(--muted); font-size:14px; line-height:1.8;">
+                    Hamara Grand Auditorium school ka heart hai. Ise scientific acoustics ke saath design kiya gaya hai
+                    taaki har corner tak clear sound pahunche. Annual functions se lekar inter-school competitions tak,
+                    ye har bade event ka gawah hai.
+                </p>
+            </div>
+            <div class="panel">
+                <h3>Venue Manager</h3>
+                <div class="mentor-box">
+                    <div class="m-img">🎭</div>
+                    <div>
+                        <h4 style="color:var(--primary)">Mr. Rajesh Khanna</h4>
+                        <p style="font-size:12px; color:var(--muted)">Events & Cultural Head</p>
+                        <p style="font-size:12px;">Expert in Stage Management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-label">Event Management</h3>
+        <div class="triple-grid">
+            <div class="small-card">
+                <h4 style="color:var(--primary); margin-bottom:10px;">📌 Hall Rules</h4>
+                <ul style="list-style:none; font-size:12px; color:var(--muted); line-height:2;">
+                    <li>• No food/drinks inside the hall.</li>
+                    <li>• Keep mobile phones on silent.</li>
+                    <li>• Emergency exits humesha clear rakhein.</li>
+                </ul>
+            </div>
+            <div class="small-card">
+                <h4 style="color:var(--primary); margin-bottom:10px;">📅 Upcoming Events</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jan 26</td>
+                            <td>Republic Day Gala</td>
+                        </tr>
+                        <tr>
+                            <td>Feb 15</td>
+                            <td>Inter-School Debate</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="small-card" style="text-align:center; border:2px dashed var(--primary)">
+                <span style="font-size:40px;">🌟</span>
+                <h4 style="color:var(--primary)">Acoustic Rating</h4>
+                <p style="font-size:11px; color:var(--muted)">Certified ISO 9001 for Sound Quality</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h1 id="m-icon" style="font-size:70px"></h1>
+            <h2 id="m-title" style="color:var(--primary); margin:15px 0"></h2>
+            <p id="m-desc" style="color:var(--muted); line-height:1.8"></p>
+            <button onclick="closeModal()"
+                style="margin-top:20px; padding:10px 25px; background:var(--primary); border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const details = {
+            capacity: { icon: "🪑", title: "Premium Seating", desc: "Our auditorium features tiered ergonomic seating for over 1000 guests, ensuring a clear view of the stage from every single seat." },
+            audio: { icon: "🔊", title: "Pro Audio Setup", desc: "Equipped with JBL line-array speakers and digital mixers, providing a cinematic sound experience for dramas and concerts." },
+            lights: { icon: "💡", title: "Smart Lighting", desc: "Programmable DMX lighting system with motorized moving heads and LED washes to create the perfect mood for any event." },
+            ac: { icon: "❄️", title: "Climate Control", desc: "Advanced noiseless central air-conditioning system that maintains 22°C even during a full-house performance." }
+        };
+
+        function openModal(key) {
+            document.getElementById('m-icon').innerText = details[key].icon;
+            document.getElementById('m-title').innerText = details[key].title;
+            document.getElementById('m-desc').innerText = details[key].desc;
+            document.getElementById('modal').style.display = 'flex';
+        }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>S.S. Dev Public School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>S.S. Dev School</h3>
+                <p style="color: #9aa4c7; font-size: 0.85rem; line-height: 1.6;">
+                    Leading education with smart technology and traditional values.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/modules/about/about.html">About School</a></li>
+                    <li><a href="javascript:void(0)" id="openAdmission">Admission Policy</a></li>
+                    <li><a href="/modules/facilities/facilities.html">Facility Modules</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            </div>
+    </footer>
+
+    <div id="admissionModal" class="admission-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-graduation-cap"></i> Admission Policy</h2>
+                <span class="close-btn" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="policy-item">
+                    <h3><i class="fas fa-calendar-check"></i> Admission Timeline</h3>
+                    <p>New admissions for the academic session usually begin in <strong>March</strong>. Application forms are available at the school office during working hours.</p>
+                </div>
+                <div class="policy-item">
+                    <h3><i class="fas fa-user-graduate"></i> Age Criteria</h3>
+                    <p>For Nursery, the child must be 3+ years old as of April 1st of the academic year.</p>
+                </div>
+                <div class="policy-item">
+                    <h3><i class="fas fa-file-invoice"></i> Documents Required</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Original Birth Certificate</li>
+                        <li><i class="fas fa-check"></i> Transfer Certificate (TC) from previous school</li>
+                        <li><i class="fas fa-check"></i> 4 Passport size photographs</li>
+                        <li><i class="fas fa-check"></i> Aadhar Card of student & parents</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close-footer" id="closeFooterBtn">Close</button>
+                <button class="btn-apply" onclick="window.location.href='/modules/contact/contact.html'">Enquire Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

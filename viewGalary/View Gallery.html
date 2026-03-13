@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | S.S. Dev Public School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #00ffd5;
+            --bg-dark: #0b1220;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* --- GALLERY HEADER --- */
+        .gallery-hero {
+            padding: 120px 5% 60px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0, 255, 213, 0.05), transparent);
+        }
+
+        .gallery-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .gallery-hero span {
+            color: var(--accent);
+        }
+
+        /* --- FILTER BUTTONS --- */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* --- GALLERY GRID --- */
+        .gallery-container {
+            padding: 0 8% 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        /* --- LIGHTBOX MODAL --- */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+                padding: 0 5% 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="gallery-hero">
+        <h1>Our <span>School Gallery</span></h1>
+        <p>Capturing moments of excellence and growth.</p>
+    </section>
+
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Photos</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="sports">Sports</button>
+        <button class="filter-btn" data-filter="campus">Campus</button>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-item events">
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94" alt="Event 1">
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+        </div>
+        <div class="gallery-item sports">
+            <img src="https://images.unsplash.com/photo-1526676023131-d35242e71b11" alt="Sports">
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+        </div>
+        <div class="gallery-item campus">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08759dfc3f3" alt="Campus">
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+        </div>
+        <div class="gallery-item events">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865" alt="Event 2">
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+        </div>
+        <div class="gallery-item sports">
+            <img src="https://images.unsplash.com/photo-1544648100-333333333333" alt="Cricket">
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+        </div>
+        <div class="gallery-item campus">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7" alt="Lab">
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img src="" alt="Full View" id="lightbox-img">
+    </div>
+
+    <script>
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close-lightbox');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+            });
+        });
+
+        closeBtn.onclick = () => lightbox.classList.remove('active');
+        lightbox.onclick = (e) => { if (e.target !== lightboxImg) lightbox.classList.remove('active'); }
+
+        // Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Active Button class
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

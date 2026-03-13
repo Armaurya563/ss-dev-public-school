@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Robotics Lab | S.S. Dev Public School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffd5;
+            --bg: #060b18;
+            --card: #121c35;
+            --text: #ffffff;
+            --muted: #9aa4c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 18, 32, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 18px 40px;
+            font-size: 22px;
+            font-weight: 700;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        header span {
+            color: var(--primary);
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* ===== 1st SECTION: ROBOTIC HERO ANIMATION ===== */
+        .robot-hero {
+            width: 100%;
+            height: 380px;
+            background: radial-gradient(circle, #1a2a4a 0%, #060b18 100%);
+            border-radius: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Robotic Arm Style Animation */
+        .arm-base {
+            width: 60px;
+            height: 20px;
+            background: #333;
+            border-radius: 5px;
+            position: relative;
+            animation: moveBase 4s infinite ease-in-out;
+        }
+
+        .arm-joint {
+            width: 10px;
+            height: 80px;
+            background: var(--primary);
+            margin: auto;
+            transform-origin: bottom;
+            animation: moveArm 2s infinite alternate ease-in-out;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .scanner {
+            width: 40px;
+            height: 5px;
+            background: red;
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            box-shadow: 0 0 10px red;
+            animation: scan 1s infinite;
+        }
+
+        @keyframes moveArm {
+            from {
+                transform: rotate(-30deg);
+            }
+
+            to {
+                transform: rotate(30deg);
+            }
+        }
+
+        @keyframes scan {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .hero-text {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 35px;
+            letter-spacing: 5px;
+        }
+
+        .hero-text p {
+            color: var(--muted);
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 2nd SECTION: ROBOTICS CARDS ===== */
+        .section-label {
+            color: var(--primary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .tech-card {
+            background: var(--card);
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 255, 213, 0.2);
+        }
+
+        .tech-card i {
+            font-size: 45px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* ===== 3rd SECTION: OVERVIEW & MENTOR ===== */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .panel {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .panel h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .mentor-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .m-img {
+            width: 70px;
+            height: 70px;
+            background: #1a2a4a;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+        }
+
+        /* ===== 4th SECTION: RULES, SCHEDULE, WALL ===== */
+        .triple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .small-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        table {
+            width: 100%;
+            font-size: 13px;
+            color: var(--muted);
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 10px 5px;
+            border-bottom: 1px solid #222;
+            text-align: left;
+        }
+
+        th {
+            color: var(--primary);
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid var(--primary);
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>STEM &<span> Robotics</span></header>
+
+    <div class="container">
+
+        <div class="robot-hero">
+            <div class="arm-base">
+                <div class="arm-joint">
+                    <div class="scanner"></div>
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>FUTURE BOTICS</h1>
+                <p>Innovating the Future, Today</p>
+            </div>
+        </div>
+
+        <h3 class="section-label">Tech Modules</h3>
+        <div class="tech-grid">
+            <div class="tech-card" onclick="openModal('ai')"><i>🤖</i>
+                <h4>AI & ML</h4>
+                <p>Smart Thinking Machines</p>
+            </div>
+            <div class="tech-card" onclick="openModal('drone')"><i>🛸</i>
+                <h4>Drone Tech</h4>
+                <p>Aerodynamics & Flight</p>
+            </div>
+            <div class="tech-card" onclick="openModal('iot')"><i>🌐</i>
+                <h4>IoT Systems</h4>
+                <p>Connected World</p>
+            </div>
+            <div class="tech-card" onclick="openModal('print')"><i>🖨️</i>
+                <h4>3D Printing</h4>
+                <p>Rapid Prototyping</p>
+            </div>
+        </div>
+
+        <h3 class="section-label">Mentorship & Goal</h3>
+        <div class="dual-grid">
+            <div class="panel">
+                <h3>Lab Overview</h3>
+                <p style="color:var(--muted); font-size:14px; line-height:1.8;">
+                    Hamari STEM Lab bacho ko theoretical knowledge se hatkar real-world problem solving seekhati hai.
+                    LEGO kits, Arduino, aur Raspberry Pi ke saath hum future engineers taiyar karte hain.
+                </p>
+            </div>
+            <div class="panel">
+                <h3>STEM Expert</h3>
+                <div class="mentor-box">
+                    <div class="m-img">🛠️</div>
+                    <div>
+                        <h4 style="color:var(--primary)">Er. Manish Verma</h4>
+                        <p style="font-size:12px; color:var(--muted)">Robotics Engineer (IIT Alumni)</p>
+                        <p style="font-size:12px;">Specialist in Embedded Systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-label">Lab Management</h3>
+        <div class="triple-grid">
+            <div class="small-card">
+                <h4 style="color:var(--primary); margin-bottom:10px;">📌 Lab Rules</h4>
+                <ul style="list-style:none; font-size:12px; color:var(--muted); line-height:2;">
+                    <li>• Static wristbands pehnna zaroori hai.</li>
+                    <li>• Components ko wapas box mein rakhein.</li>
+                    <li>• Soldering station par teacher ki presence.</li>
+                </ul>
+            </div>
+            <div class="small-card">
+                <h4 style="color:var(--primary); margin-bottom:10px;">📅 Schedule</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Focus</th>
+                            <th>Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tue-Wed</td>
+                            <td>Coding</td>
+                            <td>VIII-X</td>
+                        </tr>
+                        <tr>
+                            <td>Fri-Sat</td>
+                            <td>Robots</td>
+                            <td>IX-XII</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="small-card" style="text-align:center; border:2px dashed var(--primary)">
+                <span style="font-size:40px;">🏆</span>
+                <h4 style="color:var(--primary)">Innovator of the Month</h4>
+                <p style="font-size:11px; color:var(--muted)">Aaryan - Automatic Irrigaton Bot</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h1 id="m-icon" style="font-size:70px"></h1>
+            <h2 id="m-title" style="color:var(--primary); margin:15px 0"></h2>
+            <p id="m-desc" style="color:var(--muted); line-height:1.8"></p>
+            <button onclick="closeModal()"
+                style="margin-top:20px; padding:10px 25px; background:var(--primary); border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Got
+                it!</button>
+        </div>
+    </div>
+
+    <script>
+        const details = {
+            ai: { icon: "🤖", title: "Artificial Intelligence", desc: "Bache Python aur Machine Learning ke basics seekhte hain taaki wo khud ke smart chatbots aur predictive models bana sakein." },
+            drone: { icon: "🛸", title: "Drone Technology", desc: "Drone assembly, calibration aur flight laws ke baare mein hands-on training di jati hai, jisme sensors aur aerodynamics shamil hain." },
+            iot: { icon: "🌐", title: "Internet of Things", desc: "Ghar ke appliances ko internet se control karna aur smart city models banana seekhein Arduino aur NodeMCU ke zariye." },
+            print: { icon: "🖨️", title: "3D Printing & Design", desc: "Tinkercad aur Fusion 360 se designs banakar unhe 3D printer par live reality mein badalte dekhne ka anubhav." }
+        };
+
+        function openModal(key) {
+            document.getElementById('m-icon').innerText = details[key].icon;
+            document.getElementById('m-title').innerText = details[key].title;
+            document.getElementById('m-desc').innerText = details[key].desc;
+            document.getElementById('modal').style.display = 'flex';
+        }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+    </script>
+</body>
+
+</html>
